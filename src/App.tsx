@@ -1,9 +1,9 @@
 import './App.css'
-import ActorsTable from "./features/actorsTable/actorsTable";
+import CharactersTable from "./features/charactersTable/charactersTable";
 
 function App() {
   return (
-      <ActorsTable />
+      <CharactersTable />
   )
 }
 
