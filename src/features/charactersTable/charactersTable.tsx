@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetCharactersQuery } from '../../app/services/charactersApi';
+import {updateCharacter, useGetCharactersQuery} from '../../app/services/charactersApi';
 import { CharacterType } from '../../types';
 
 import { DataTable } from 'primereact/datatable';
@@ -9,12 +9,16 @@ import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
 import EditDialog from './editDialog';
 
+import { useAppDispatch } from '../../app/store';
+import { deleteCharacter } from '../../app/services/charactersApi';
+
 export default function CharactersTable() {
   const [selectedCharacter, setSelectedCharacter] = useState<CharacterType | null>(null);
   const { data, isLoading } = useGetCharactersQuery()<{
     isLoading: boolean;
     data: CharacterType;
   }>;
+  const dispatch = useAppDispatch();
 
   if (isLoading) {
     return <div>Loading</div>;
@@ -41,7 +45,7 @@ export default function CharactersTable() {
           severity="info"
           aria-label="Edit"
         />
-        <Button label="Remove" icon="pi-times" rounded text severity="danger" aria-label="Delete" />
+        <Button onClick={() => dispatch(deleteCharacter(rowData.id))} label="Remove" icon="pi-times" rounded text severity="danger" aria-label="Delete" />
       </div>
     );
   };
