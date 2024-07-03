@@ -32,3 +32,4 @@ Steps to run the app:
 ```
 
 In src directory will be added folder like components, routes etc.
+
