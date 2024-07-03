@@ -1,9 +1,12 @@
-import './App.css'
+import './App.css';
+import CharactersTable from './features/charactersTable/charactersTable';
 
 function App() {
   return (
-      <div>App</div>
-  )
+    <div className="container mx-auto mt-10">
+      <CharactersTable />
+    </div>
+  );
 }
 
-export default App
+export default App;
